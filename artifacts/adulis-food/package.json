@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "cross-env PORT=23019 vite --config vite.config.ts --host 0.0.0.0",
-    "dev:main": "cross-env PORT=5000 API_PORT=8099 vite --config vite.config.ts --host 0.0.0.0",
+    "dev": "PORT=23019 vite --config vite.config.ts --host 0.0.0.0",
+    "dev:main": "PORT=5000 API_PORT=8099 vite --config vite.config.ts --host 0.0.0.0",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
