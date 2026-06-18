@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "0BHg6OAAyA0324k66sbRH"
+uri = "file://adulisfoodcomplex-website.tar.gz"
+type = "unspecified"
+title = "adulisfoodcomplex-website.tar.gz"

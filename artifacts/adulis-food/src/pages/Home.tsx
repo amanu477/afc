@@ -1,0 +1,672 @@
+import { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion";
+import { Link } from "wouter";
+import { ArrowRight, Star, ChevronRight, ArrowUp, Settings, PackageCheck, FlaskConical, Truck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
+
+function CountUpNumber({ value, suffix }: { value: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const end = value;
+    const duration = 2000;
+    const increment = end / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [inView, value]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
+export default function Home() {
+  const { t } = useTranslation();
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 1000], [0, 300]);
+  const opacityHero = useTransform(scrollY, [0, 600], [1, 0]);
+
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowScrollTop(window.scrollY > 500);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const featuredProducts = [
+    {
+      name: t("home.products.kolo.name"),
+      image: "https://superboostup.com/AdulisFarm/wp-content/uploads/2026/02/Kolo-300x300.png",
+      desc: t("home.products.kolo.desc"),
+      badge: t("home.products.kolo.badge"),
+      imgPad: "p-8",
+      imgFit: "object-contain",
+    },
+    {
+      name: t("home.products.daboKolo.name"),
+      image: "https://superboostup.com/AdulisFarm/wp-content/uploads/2026/02/Dabo-Kolo-300x300.png",
+      desc: t("home.products.daboKolo.desc"),
+      badge: t("home.products.daboKolo.badge"),
+      imgPad: "p-8",
+      imgFit: "object-contain",
+    },
+    {
+      name: t("home.products.peanutButter.name"),
+      image: "/peanut-butter-nobg.png",
+      desc: t("home.products.peanutButter.desc"),
+      badge: t("home.products.peanutButter.badge"),
+      imgPad: "p-2",
+      imgFit: "object-cover",
+    },
+    {
+      name: t("home.products.roastedPeanuts.name"),
+      image: "https://superboostup.com/AdulisFarm/wp-content/uploads/2026/02/Roasted-Peanut-300x300.png",
+      desc: t("home.products.roastedPeanuts.desc"),
+      badge: t("home.products.roastedPeanuts.badge"),
+      imgPad: "p-8",
+      imgFit: "object-contain",
+    },
+  ];
+
+  const testimonials = [
+    {
+      text: "As someone who lives abroad, finding the true taste of home is rare. The Beso and Shiro from Adulis Food Complex are game-changers. The packaging is world-class, but the flavor is exactly like my grandmother's kitchen in Addis.",
+      author: "Selamawit T.",
+      role: "Customer from Diaspora",
+    },
+    {
+      text: "The quality of the Roasted Peanuts and Dabo Kolo is unmatched. You can tell they use premium ingredients — no dust, just perfectly roasted, crunchy perfection. It's my go-to snack for the office.",
+      author: "Dawit M.",
+      role: "Office Professional",
+    },
+    {
+      text: "We use Adulis spices in our restaurant, and the feedback has been incredible. The 'export-quality' label isn't just marketing; you can see and smell the difference immediately.",
+      author: "Tigist B.",
+      role: "Restaurant Owner",
+    },
+  ];
+
+  const stats = [
+    { value: 10, suffix: "+", label: t("home.statsYears") },
+    { value: 50, suffix: "K+", label: t("home.statsFamilies") },
+    { value: 20, suffix: "+", label: t("home.statsProducts") },
+    { value: 15, suffix: "+", label: t("home.statsCountries") },
+  ];
+
+  const processSteps = [
+    {
+      icon: Settings,
+      label: "Mixing & Processing",
+      desc: "Industrial-grade CEPi mixing tanks process raw ingredients to exacting standards",
+      image: "/factory/factory-conveyor-tanks.webp",
+    },
+    {
+      icon: FlaskConical,
+      label: "Quality Control",
+      desc: "Every batch passes through our in-house laboratory before packaging begins",
+      image: "/factory/factory-abb-mixer.webp",
+    },
+    {
+      icon: PackageCheck,
+      label: "Precision Packaging",
+      desc: "MARKMAK vertical form-fill-seal machines package products hygienically at scale",
+      image: "/factory/factory-packaging-machine.webp",
+    },
+    {
+      icon: Truck,
+      label: "Packed & Ready",
+      desc: "Finished products are sorted, boxed, and prepared for nationwide distribution",
+      image: "/factory/factory-production-panorama.webp",
+    },
+  ];
+
+  const titleAmharic = "አዱሊስ";
+
+  const particleVariants = {
+    animate: (i: number) => ({
+      y: [0, -20 - Math.random() * 50, 0],
+      x: [0, (Math.random() - 0.5) * 50, 0],
+      opacity: [0.2, 0.8, 0.2],
+      transition: {
+        duration: 3 + Math.random() * 4,
+        repeat: Infinity,
+        ease: "easeInOut" as const,
+        delay: i * 0.2,
+      },
+    }),
+  };
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      {/* HERO */}
+      <section className="relative h-screen flex items-center justify-center">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div className="absolute inset-0" style={{ y: y1, opacity: opacityHero }}>
+            <img
+              src="/factory/hero-wheat-field.webp"
+              fetchPriority="high"
+              alt="Golden wheat fields — the heart of Adulis Food Complex"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30" />
+            <div className="absolute inset-0 bg-grain" />
+          </motion.div>
+        </div>
+
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            custom={i}
+            variants={particleVariants}
+            animate="animate"
+            className="absolute w-2 h-2 rounded-full bg-amber-400/40"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              filter: "blur(2px)"
+            }}
+          />
+        ))}
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="max-w-2xl text-white"
+          >
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-primary font-medium tracking-widest uppercase text-sm mb-4"
+            >
+              {t("home.heroBadge")}
+            </motion.p>
+            
+            <h1 className="font-display text-6xl md:text-8xl font-bold tracking-wide mb-4 text-amber-400 drop-shadow-2xl leading-none flex gap-1">
+              {titleAmharic.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 40, rotateX: -90 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  transition={{ delay: 0.5 + i * 0.1, type: "spring", stiffness: 100 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </h1>
+            
+            <h2 className="text-3xl md:text-4xl font-display font-semibold mb-6 leading-tight shimmer-text"
+              style={{ whiteSpace: "pre-line" }}>
+              {t("home.heroSubtitle")}
+            </h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+              className="text-lg text-white/80 mb-10 leading-relaxed max-w-xl"
+            >
+              {t("home.heroDesc")}
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.6 }}
+              className="flex flex-wrap gap-4"
+            >
+              <Link href="/products">
+                <Button
+                  size="lg"
+                  className="text-base px-8 py-6 rounded-full shadow-[0_0_25px_rgba(194,99,33,0.5)] hover:shadow-[0_0_45px_rgba(194,99,33,0.8)] transition-all hover:-translate-y-1 relative overflow-hidden group"
+                >
+                  <span className="relative z-10 flex items-center">
+                    {t("home.exploreProducts")}
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                </Button>
+              </Link>
+              <Link href="/about">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-base px-8 py-6 rounded-full border-white/40 text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all hover:-translate-y-1"
+                >
+                  {t("home.ourStory")}
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+        >
+          <span className="text-xs tracking-widest uppercase">{t("home.scroll")}</span>
+          <motion.div
+            animate={{ y: [0, 8, 0], opacity: [0.5, 1, 0.5] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="w-0.5 h-8 bg-white/50 rounded-full"
+          />
+        </motion.div>
+      </section>
+
+      {/* STATS BAR */}
+      <section className="bg-primary py-12 relative overflow-hidden">
+        <div className="absolute inset-0 bg-texture-gradient opacity-50" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
+                className="text-center text-white"
+              >
+                <div className="text-4xl md:text-5xl font-display font-bold text-amber-100 drop-shadow-md">
+                  <CountUpNumber value={stat.value} suffix={stat.suffix} />
+                </div>
+                <div className="text-white/90 text-sm mt-2 font-medium tracking-wide">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* POPULAR PRODUCTS */}
+      <section className="py-24 bg-background relative">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">
+              {t("home.whatWeOffer")}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-5 relative inline-block">
+              {t("home.popularProducts")}
+              <motion.div
+                className="absolute -bottom-2 left-0 h-1 bg-primary/30 w-full rounded-full"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              />
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mt-4">
+              {t("home.popularDesc")}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 perspective-1000">
+            {featuredProducts.map((product, idx) => (
+              <motion.div
+                key={product.name}
+                initial={{ opacity: 0, y: 40, rotateX: 10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: idx * 0.15, duration: 0.6, type: "spring", stiffness: 50 }}
+                whileHover={{ y: -10, rotateX: 5, rotateY: -5, scale: 1.02 }}
+                className="h-full"
+              >
+                <Card className="h-full border-border/40 bg-card overflow-hidden group hover:shadow-[0_20px_40px_-15px_rgba(194,99,33,0.3)] hover:border-primary/50 transition-all duration-300">
+                  <div className="relative aspect-square bg-gradient-to-b from-muted/50 to-muted/20 overflow-hidden">
+                    <span className="absolute top-4 left-4 z-10 text-xs font-bold bg-primary text-white px-3 py-1.5 rounded-full shadow-md">
+                      {product.badge}
+                    </span>
+                    <motion.div 
+                      className={`w-full h-full ${product.imgPad}`}
+                      whileHover={{ scale: 1.15 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className={`w-full h-full ${product.imgFit} filter drop-shadow-xl animate-float-slow`}
+                        loading="lazy"
+                      />
+                    </motion.div>
+                    <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300" />
+                  </div>
+                  <CardContent className="p-6 relative">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                    <h3 className="font-display text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{product.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div 
+            className="text-center mt-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+          >
+            <Link href="/products">
+              <Button variant="outline" size="lg" className="rounded-full border-primary/50 text-primary hover:bg-primary hover:text-white transition-all px-8 group shadow-sm hover:shadow-lg">
+                {t("home.viewAll")}
+                <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* TASTE OF HOME */}
+      <section className="py-24 bg-muted/30 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -100, scale: 0.9 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative rounded-[2rem] overflow-hidden shadow-2xl group"
+            >
+              <motion.img
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.8 }}
+                src="/factory/factory-production-boxes.webp"
+                alt="Adulis production floor with packed products"
+                className="w-full h-full object-cover aspect-[4/3]"
+              />
+              <div className="absolute inset-0 border-4 border-white/20 rounded-[2rem] m-4 pointer-events-none transition-all duration-500 group-hover:scale-95" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="space-y-6"
+            >
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-primary font-medium tracking-widest uppercase text-sm"
+              >
+                {t("home.ourHeritage")}
+              </motion.p>
+              
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
+                {t("home.tasteOfHome")}
+              </h2>
+              
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: 80 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="h-1 bg-primary rounded-full" 
+              />
+              
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {t("home.tasteDesc1")}
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                {t("home.tasteDesc2")}
+              </p>
+              
+              <motion.div
+                whileHover={{ x: 5 }}
+                className="inline-block pt-4"
+              >
+                <Link href="/about">
+                  <Button variant="ghost" className="rounded-full mt-2 text-primary hover:bg-primary/10 hover:text-primary transition-all p-0 group">
+                    <span className="border-b border-primary/30 pb-0.5 group-hover:border-primary transition-colors font-semibold">
+                      {t("home.learnOurStory")}
+                    </span>
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW WE MAKE IT — PRODUCTION PROCESS */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/4 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/4 rounded-full blur-3xl -z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">
+              Inside Our Facility
+            </p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-5">
+              How We Make It
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              From raw ingredients to sealed packaging — our production line is built for purity, precision, and scale.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {processSteps.map((step, idx) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={step.label}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: idx * 0.12, duration: 0.6, type: "spring", stiffness: 60 }}
+                  whileHover={{ y: -8 }}
+                  className="group"
+                >
+                  <Card className="h-full border-border/40 bg-card overflow-hidden hover:shadow-[0_20px_40px_-15px_rgba(194,99,33,0.25)] hover:border-primary/40 transition-all duration-300">
+                    <div className="relative h-52 overflow-hidden bg-muted">
+                      <img
+                        src={step.image}
+                        alt={step.label}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                      <div className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-primary/90 flex items-center justify-center text-white shadow-lg">
+                        <Icon className="w-5 h-5" strokeWidth={1.5} />
+                      </div>
+                      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white text-xs font-bold">
+                        {idx + 1}
+                      </div>
+                    </div>
+                    <CardContent className="p-5">
+                      <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                        {step.label}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+            className="text-center mt-12"
+          >
+            <Link href="/about">
+              <Button variant="outline" size="lg" className="rounded-full border-primary/50 text-primary hover:bg-primary hover:text-white transition-all px-8 group shadow-sm hover:shadow-lg">
+                Learn About Our Facility
+                <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-24 bg-muted/30 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">
+              {t("home.testimonials")}
+            </p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
+              {t("home.whatCustomersSay")}
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              {t("home.trustedBy")}
+            </p>
+          </motion.div>
+
+          <div className="flex overflow-hidden relative">
+            <motion.div
+              className="flex gap-6 w-max"
+              animate={{ x: [0, -1000] }}
+              transition={{ 
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 20,
+                  ease: "linear",
+                },
+              }}
+            >
+              {[...testimonials, ...testimonials, ...testimonials].map((t_item, idx) => (
+                <div key={idx} className="w-[350px] shrink-0">
+                  <Card className="h-full bg-card border-border/40 hover:border-primary/30 transition-all hover:shadow-[0_10px_30px_rgba(194,99,33,0.1)] hover:-translate-y-2 duration-300">
+                    <CardContent className="p-8 flex flex-col h-full relative">
+                      <div className="absolute top-4 right-6 text-6xl text-primary/10 font-serif leading-none">"</div>
+                      <div className="flex text-primary mb-6 relative z-10">
+                        {[1, 2, 3, 4, 5].map((i) => (
+                          <Star key={i} className="w-4 h-4 fill-current" />
+                        ))}
+                      </div>
+                      <p className="text-foreground/80 italic leading-relaxed flex-grow text-sm relative z-10">
+                        "{t_item.text}"
+                      </p>
+                      <div className="mt-8 pt-5 border-t border-border/50">
+                        <p className="font-display font-bold text-foreground text-lg">{t_item.author}</p>
+                        <p className="text-primary text-xs font-medium uppercase tracking-wider mt-1">{t_item.role}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </motion.div>
+            
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+          </div>
+        </div>
+      </section>
+
+      {/* CAREERS CTA BANNER */}
+      <section className="relative py-32 overflow-hidden">
+        <motion.div 
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          whileInView={{ scale: 1 }}
+          transition={{ duration: 1.5 }}
+          viewport={{ once: true }}
+        >
+          <img
+            src="/factory/factory-building-exterior.webp"
+            alt="Adulis Food Complex facility"
+            className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+          <div className="absolute inset-0 bg-secondary/80 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 animated-border-gradient opacity-20 mix-blend-overlay" />
+        </motion.div>
+        
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 drop-shadow-lg">
+              {t("home.careersTitle")}
+            </h2>
+            <motion.div 
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="h-1.5 bg-primary mx-auto mb-8 rounded-full shadow-[0_0_10px_rgba(194,99,33,0.8)]" 
+            />
+            <p className="text-white/90 text-xl leading-relaxed mb-12 font-medium">
+              {t("home.careersDesc")}
+            </p>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                className="text-lg px-10 py-7 rounded-full bg-white text-secondary font-bold hover:bg-primary hover:text-white transition-all animate-pulse-glow hover:scale-105"
+              >
+                {t("home.getInTouch")}
+                <ArrowRight className="ml-2 w-6 h-6" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Scroll-to-top */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed bottom-8 right-8 z-40 w-12 h-12 bg-primary text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center hover:bg-primary/90 hover:-translate-y-1 transition-all duration-200"
+          >
+            <ArrowUp className="w-5 h-5" />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
