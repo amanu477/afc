@@ -196,7 +196,7 @@ export default function AboutUs() {
                     key={i}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ delay: i * 0.1 }}
                     className="flex items-center gap-3"
                   >
@@ -229,7 +229,8 @@ export default function AboutUs() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
             <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">What We Stand For</p>
@@ -243,7 +244,8 @@ export default function AboutUs() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6 }}
             className="bg-card border border-border/40 rounded-3xl p-10 mb-14 max-w-4xl mx-auto shadow-md"
           >
             <div className="space-y-4 text-muted-foreground leading-relaxed text-lg text-center">
@@ -261,13 +263,12 @@ export default function AboutUs() {
               return (
                 <motion.div
                   key={f.label}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.12, duration: 0.5 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
                 >
-                  <Card className="h-full border-0 group bg-card hover:-translate-y-2 transition-all duration-500 rounded-2xl overflow-hidden shadow-lg">
-                    <div className="absolute inset-[2px] bg-card rounded-[14px] z-0" />
+                  <Card className="relative h-full border-0 group bg-card hover:-translate-y-2 transition-all duration-500 rounded-2xl overflow-hidden shadow-lg">
                     <CardContent className="p-8 flex flex-col items-center text-center relative z-10">
                       <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-5 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                         <Icon strokeWidth={1.5} className="w-8 h-8" />
@@ -294,7 +295,8 @@ export default function AboutUs() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
             <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Our Impact</p>
@@ -309,7 +311,7 @@ export default function AboutUs() {
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.7 }}
               className="group rounded-[2rem] overflow-hidden shadow-xl relative h-72"
             >
@@ -329,7 +331,7 @@ export default function AboutUs() {
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.7, delay: 0.15 }}
               className="group rounded-[2rem] overflow-hidden shadow-xl relative h-72"
             >
@@ -360,8 +362,8 @@ export default function AboutUs() {
                   key={item.title}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.12 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
                 >
                   <Card className="h-full border-border/40 bg-card hover:shadow-xl hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 rounded-2xl">
                     <CardContent className="p-8 flex gap-5 items-start">
@@ -394,7 +396,7 @@ export default function AboutUs() {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8 }}
             >
               <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Our Impact</p>
@@ -426,7 +428,7 @@ export default function AboutUs() {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative rounded-[2rem] overflow-hidden shadow-2xl group"
             >
@@ -457,7 +459,7 @@ export default function AboutUs() {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8 }}
             >
               <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Science & Safety</p>
@@ -478,7 +480,7 @@ export default function AboutUs() {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative rounded-[2rem] overflow-hidden shadow-2xl group"
             >
@@ -574,7 +576,7 @@ export default function AboutUs() {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8 }}
             >
               <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Our Impact</p>
@@ -599,7 +601,7 @@ export default function AboutUs() {
             <motion.div
               initial={{ opacity: 0, x: 50, rotate: 3 }}
               whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, type: "spring" }}
               className="relative"
             >
@@ -629,7 +631,8 @@ export default function AboutUs() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
             <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Our Commitment</p>
@@ -642,10 +645,10 @@ export default function AboutUs() {
               return (
                 <motion.div
                   key={p.title}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.12, duration: 0.5 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
                 >
                   <Card className="h-full border-0 group bg-card hover:-translate-y-2 transition-all duration-500 rounded-2xl shadow-lg">
                     <CardContent className="p-8 flex flex-col items-start">
@@ -671,7 +674,7 @@ export default function AboutUs() {
           initial={{ scale: 1.1 }}
           whileInView={{ scale: 1 }}
           transition={{ duration: 1.5 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="absolute inset-0"
         >
           <img
@@ -687,7 +690,7 @@ export default function AboutUs() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
           >
             <p className="text-primary font-bold tracking-widest uppercase text-sm mb-4">Get in Touch</p>
