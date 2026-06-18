@@ -13,6 +13,10 @@ import {
   Microscope,
   Thermometer,
   Wind,
+  Settings,
+  Package,
+  Layers,
+  Gauge,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -566,6 +570,124 @@ export default function AboutUs() {
 
       <div className="w-full h-px bg-border relative">
         <div className="absolute left-1/2 -translate-x-1/2 -top-1.5 w-3 h-3 rounded-full bg-secondary" />
+      </div>
+
+      {/* ── OUR PRODUCTION MACHINERY ── */}
+      <section className="py-24 bg-muted/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-texture-gradient opacity-30" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Inside Our Facility</p>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
+                Our Production Machinery
+              </h2>
+              <div className="w-20 h-1 bg-primary mb-8 rounded-full" />
+              <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
+                <p>
+                  Our production line is purpose-built for Ethiopian traditional foods — combining modern industrial equipment with the precision that handcrafted food demands. Every machine is maintained daily and calibrated to exacting standards.
+                </p>
+                <p>
+                  From heavy-duty mixing tanks to high-speed vertical form-fill-seal packaging lines, our machinery lets us scale without ever compromising consistency or hygiene.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative rounded-[2rem] overflow-hidden shadow-2xl group"
+            >
+              <img
+                src="/factory/factory-overhead-view.webp"
+                alt="Adulis production facility overhead view"
+                className="w-full h-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-white font-display font-bold text-lg">Full Production Floor</p>
+                <p className="text-white/75 text-sm">Overhead view of our integrated manufacturing line.</p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Machinery cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                image: "/factory/factory-cepi-tank.webp",
+                icon: Layers,
+                title: "CEPi Mixing Tank",
+                desc: "Industrial-grade CEPi stainless steel mixing tanks process raw ingredients at high volume with precise temperature control.",
+              },
+              {
+                image: "/factory/factory-abb-mixer.webp",
+                icon: Settings,
+                title: "ABB High-Speed Mixer",
+                desc: "ABB-powered mixer delivers consistent blending of spices, grains, and legumes — maintaining uniform texture batch after batch.",
+              },
+              {
+                image: "/factory/factory-flowwrap-wide.webp",
+                icon: Package,
+                title: "MARKMAK Flowwrap Machine",
+                desc: "Vertical form-fill-seal packaging machine wraps and seals products hygienically at scale, preserving freshness without preservatives.",
+              },
+              {
+                image: "/factory/factory-control-panel.webp",
+                icon: Gauge,
+                title: "Control & Monitoring Panel",
+                desc: "Centralised control panels allow our technicians to monitor roasting temperature, conveyor speed, and packaging output in real time.",
+              },
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  whileHover={{ y: -6 }}
+                  className="group"
+                >
+                  <Card className="h-full border-border/40 bg-card overflow-hidden hover:shadow-[0_15px_30px_-10px_rgba(194,99,33,0.2)] hover:border-primary/40 transition-all duration-300">
+                    <div className="relative h-44 overflow-hidden bg-muted">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-primary/90 flex items-center justify-center text-white shadow-md">
+                        <Icon className="w-4 h-4" strokeWidth={1.5} />
+                      </div>
+                    </div>
+                    <CardContent className="p-5">
+                      <h3 className="font-display text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <div className="w-full h-px bg-border relative">
+        <div className="absolute left-1/2 -translate-x-1/2 -top-1.5 w-3 h-3 rounded-full bg-primary" />
       </div>
 
       {/* ── OUR TEAM ── */}
