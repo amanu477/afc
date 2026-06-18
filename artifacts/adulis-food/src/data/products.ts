@@ -106,7 +106,7 @@ export const STATIC_PRODUCTS: Product[] = [
     tagline: "Authentic. Ancestral. Absolute.",
     oneLiner: "Crafted here. Perfected here. Pure here.",
     description: "Hand-selected ingredients, processed with traditional techniques. No additives, no shortcuts. The true taste of an Ethiopian kitchen in every spoonful.",
-    imageUrl: "/baltna-spices.webp",
+    imageUrl: "/baltna-hero.jpg",
     howItsMade: [],
     benefits: [],
     baltnaItems: [
@@ -317,7 +317,7 @@ export const STATIC_PRODUCTS: Product[] = [
     tagline: "Grown here. Ground here. Genuine here.",
     oneLiner: "Endemic Ethiopian species, sourced from family farms. No fillers, no imports. Unforgettable aroma from seed to jar.",
     description: "Endemic Ethiopian species, sourced from family farms. No fillers, no imports. Unforgettable aroma from seed to jar.",
-    imageUrl: "/spices.webp",
+    imageUrl: "/spices-hero.jpeg",
     sourcingStory: "Ethiopia is one of the world's most botanically diverse nations, with spice traditions predating the global spice trade. Our spices are grown in Ethiopia, ground in Ethiopia, packed in Ethiopia. No fillers. No imports.",
     howItsMade: [],
     benefits: [
@@ -348,17 +348,6 @@ export const STATIC_PRODUCTS: Product[] = [
         ],
         healthBenefit: "Rich in eugenol and other phenolic compounds. Used in traditional medicine for respiratory and gastrointestinal complaints.",
         culinaryRole: "Essential in clarified butter (nit'r qibe), shiro, and alicha. Added at the last minute as a finishing herb.",
-      },
-      {
-        name: "Mitmita",
-        profile: "Fierce, citrusy heat that arrives quickly and fades cleanly",
-        processing: [
-          "Chilies are sun-dried until they rattle.",
-          "Coarsely crushed — never powdered to dust.",
-          "Different spices are added whole to the blend.",
-          "The entire blend is gently warmed to bloom the oils.",
-        ],
-        healthBenefit: "High capsaicin content; traditionally applied as a stimulant and to improve circulation. Vitamin C from fresh peppers is partially retained through careful low-heat drying.",
       },
       {
         name: "Tikur Azmud (Black Cumin)",
