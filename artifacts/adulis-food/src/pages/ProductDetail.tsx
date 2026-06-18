@@ -134,7 +134,7 @@ export default function ProductDetail() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="mt-10 grid gap-3"
+              className={`mt-10 grid gap-3 ${imgs.length === 1 ? "max-w-sm mx-auto" : ""}`}
               style={{ gridTemplateColumns: `repeat(${Math.min(imgs.length, 3)}, 1fr)` }}
             >
               {imgs.map((src, i) => (
