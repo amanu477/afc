@@ -59,7 +59,7 @@ export default function Home() {
     },
     {
       name: t("home.products.daboKolo.name"),
-      image: "/kolo-bags-group.jpg",
+      image: "/dabo-kolo-nobg.png",
       desc: t("home.products.daboKolo.desc"),
       badge: t("home.products.daboKolo.badge"),
       imgPad: "p-8",

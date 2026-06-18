@@ -63,7 +63,7 @@ export const STATIC_PRODUCTS: Product[] = [
     tagline: "Ethiopia's original bite-sized snack.",
     oneLiner: "Oven-baked wheat snacks seasoned with traditional Ethiopian spices. Perfectly crunchy and full of flavour.",
     description: "Oven-baked wheat snacks seasoned with traditional Ethiopian spices. Perfectly crunchy and full of flavour.",
-    imageUrl: "https://superboostup.com/AdulisFarm/wp-content/uploads/2026/02/Dabo-Kolo-300x300.png",
+    imageUrl: "/dabo-kolo-nobg.png",
     detailImages: [
       "/dabo-kolo-bowl.jpg",
       "/kolo-bags-group.jpg",
