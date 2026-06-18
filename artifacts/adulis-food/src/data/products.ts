@@ -369,4 +369,16 @@ export const STATIC_PRODUCTS: Product[] = [
       "Encourages Home Cooking – Faster than takeout. More nourishing than processed convenience foods.",
     ],
   },
+  {
+    id: 100,
+    name: "Ethiopian Baltna",
+    category: "Spice Blends",
+    subtitle: "Authentic. Ancestral. Absolute.",
+    tagline: "Authentic. Ancestral. Absolute.",
+    oneLiner: "Crafted here. Perfected here. Pure here.",
+    description: "Hand-selected ingredients, processed with traditional techniques. No additives, no shortcuts. The true taste of an Ethiopian kitchen in every spoonful.",
+    imageUrl: "/baltna-spices.webp",
+    howItsMade: [],
+    benefits: [],
+  },
 ];
