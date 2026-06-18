@@ -62,7 +62,7 @@ export default function Home() {
       image: "/dabo-kolo-nobg.png",
       desc: t("home.products.daboKolo.desc"),
       badge: t("home.products.daboKolo.badge"),
-      imgPad: "p-8",
+      imgPad: "p-0",
       imgFit: "object-contain",
     },
     {
