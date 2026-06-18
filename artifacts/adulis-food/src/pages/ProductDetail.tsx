@@ -250,13 +250,30 @@ export default function ProductDetail() {
                     className="bg-background rounded-2xl border border-border/60 overflow-hidden"
                   >
                     {/* Header */}
-                    <div className="flex items-start gap-4 p-6 border-b border-border/40 bg-primary/5">
-                      <div className="shrink-0 w-10 h-10 rounded-full bg-primary/15 border border-primary/25 flex items-center justify-center">
-                        <Leaf className="w-4 h-4 text-primary" />
+                    {item.imageUrl && (
+                      <div className="relative h-52 overflow-hidden bg-muted">
+                        <img
+                          src={item.imageUrl}
+                          alt={item.name}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <p className="text-white font-display font-bold text-lg leading-tight">{item.name}</p>
+                          {item.subtitle && <p className="text-white/75 text-sm">{item.subtitle}</p>}
+                        </div>
                       </div>
+                    )}
+                    <div className={`flex items-start gap-4 p-6 border-b border-border/40 ${item.imageUrl ? "" : "bg-primary/5"}`}>
+                      {!item.imageUrl && (
+                        <div className="shrink-0 w-10 h-10 rounded-full bg-primary/15 border border-primary/25 flex items-center justify-center">
+                          <Leaf className="w-4 h-4 text-primary" />
+                        </div>
+                      )}
                       <div>
-                        <h3 className="font-display font-bold text-xl text-foreground">{item.name}</h3>
-                        {item.subtitle && (
+                        {!item.imageUrl && <h3 className="font-display font-bold text-xl text-foreground">{item.name}</h3>}
+                        {!item.imageUrl && item.subtitle && (
                           <p className="text-sm text-primary font-medium mt-0.5">{item.subtitle}</p>
                         )}
                         <p className="text-xs text-muted-foreground italic mt-1">{item.tagline}</p>
