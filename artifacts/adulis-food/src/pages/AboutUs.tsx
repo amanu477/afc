@@ -570,53 +570,31 @@ export default function AboutUs() {
 
       {/* ── OUR TEAM ── */}
       <section className="py-24 bg-background relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.8 }}
-            >
-              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Our Impact</p>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
-                Our Team
-              </h2>
-              <div className="w-20 h-1 bg-primary mb-8 rounded-full" />
-              <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
-                <p>
-                  Farmers, sorters, roasters, packers, testers, drivers. Many of us grew up eating the foods we now make. We know what kolo should taste like. We know how berbere should smell. That knowledge cannot be programmed into a machine.
-                </p>
-                <p>
-                  Every hand-sorted peanut, every checked roast, every signed-off batch carries our attention.
-                </p>
-              </div>
-              <div className="mt-8 p-6 bg-primary rounded-2xl text-white shadow-lg">
-                <p className="text-2xl font-display font-bold mb-1">We eat what we make.</p>
-                <p className="text-white/85">So should you.</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50, rotate: 3 }}
-              whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.8, type: "spring" }}
-              className="relative"
-            >
-              <div className="rounded-[2rem] overflow-hidden shadow-2xl group relative aspect-[4/3]">
-                <div className="absolute inset-0 bg-primary/15 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-700" />
-                <img
-                  src="/factory/team-quality-manager.webp"
-                  alt="Adulis Food Complex team"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                  loading="lazy"
-                />
-              </div>
-              <div className="absolute -z-10 -top-6 -right-6 w-full h-full border-2 border-primary/20 rounded-[2rem]" />
-            </motion.div>
-          </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Our Impact</p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
+              Our Team
+            </h2>
+            <div className="w-20 h-1 bg-primary mb-8 rounded-full" />
+            <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
+              <p>
+                Farmers, sorters, roasters, packers, testers, drivers. Many of us grew up eating the foods we now make. We know what kolo should taste like. We know how berbere should smell. That knowledge cannot be programmed into a machine.
+              </p>
+              <p>
+                Every hand-sorted peanut, every checked roast, every signed-off batch carries our attention.
+              </p>
+            </div>
+            <div className="mt-8 p-6 bg-primary rounded-2xl text-white shadow-lg">
+              <p className="text-2xl font-display font-bold mb-1">We eat what we make.</p>
+              <p className="text-white/85">So should you.</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 

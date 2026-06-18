@@ -37,7 +37,6 @@ export const STATIC_PRODUCTS: Product[] = [
     detailImages: [
       "/kolo-bag.jpg",
       "/kolo-hands.jpg",
-      "/kolo-bags-group.jpg",
     ],
     sourcingStory: "Our barley comes from the Ethiopian highlands, where farmers have cultivated this grain for centuries — passing down knowledge of soil and season from parent to child. We partner directly with these farmers. No middlemen. Just farmers who know when the grain is ready.",
     howItsMade: [
@@ -67,6 +66,7 @@ export const STATIC_PRODUCTS: Product[] = [
     imageUrl: "https://superboostup.com/AdulisFarm/wp-content/uploads/2026/02/Dabo-Kolo-300x300.png",
     detailImages: [
       "/dabo-kolo-bowl.jpg",
+      "/kolo-bags-group.jpg",
     ],
     sourcingStory: "Made from the finest Ethiopian wheat, Dabo Kolo has been a household staple for centuries — shared at gatherings and celebrations across the country.",
     howItsMade: [

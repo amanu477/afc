@@ -59,7 +59,7 @@ export default function Home() {
     },
     {
       name: t("home.products.daboKolo.name"),
-      image: "https://superboostup.com/AdulisFarm/wp-content/uploads/2026/02/Dabo-Kolo-300x300.png",
+      image: "/kolo-bags-group.jpg",
       desc: t("home.products.daboKolo.desc"),
       badge: t("home.products.daboKolo.badge"),
       imgPad: "p-8",
