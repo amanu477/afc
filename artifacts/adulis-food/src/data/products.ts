@@ -179,7 +179,7 @@ export const STATIC_PRODUCTS: Product[] = [
     tagline: "Grown here. Ground here. Genuine here.",
     oneLiner: "Endemic Ethiopian species, sourced from family farms. No fillers, no imports. Unforgettable aroma from seed to jar.",
     description: "Endemic Ethiopian species, sourced from family farms. No fillers, no imports. Unforgettable aroma from seed to jar.",
-    imageUrl: "https://superboostup.com/AdulisFarm/wp-content/uploads/2026/02/Spices-300x300.png",
+    imageUrl: "/spices.webp",
     sourcingStory: "Ethiopia is one of the world's most botanically diverse nations, with spice traditions predating the global spice trade. Our spices are grown in Ethiopia, ground in Ethiopia, packed in Ethiopia. No fillers. No imports.",
     howItsMade: [],
     benefits: [
