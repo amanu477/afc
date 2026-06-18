@@ -6,6 +6,18 @@ export interface Spice {
   culinaryRole?: string;
 }
 
+export interface BaltnaItem {
+  name: string;
+  subtitle?: string;
+  tagline: string;
+  oneLiner: string;
+  howItsMade: string[];
+  benefits: string[];
+  traditionalUse?: string[];
+  keyIngredients?: string[];
+  culinaryUse?: string[];
+}
+
 export interface Product {
   id: number;
   name: string;
@@ -21,6 +33,7 @@ export interface Product {
   howItsMade: string[];
   benefits: string[];
   spices?: Spice[];
+  baltnaItems?: BaltnaItem[];
 }
 
 export const STATIC_PRODUCTS: Product[] = [
@@ -146,21 +159,21 @@ export const STATIC_PRODUCTS: Product[] = [
     name: "Adulis Cookies",
     category: "Snacks",
     badge: "Artisan",
-    subtitle: "Baked with Ethiopian Heritage",
-    tagline: "Where tradition meets the biscuit tin.",
-    oneLiner: "Buttery, golden, and spiced with authentic Ethiopian flavours. Baked fresh, packed with care — no shortcuts, no artificial anything.",
-    description: "Buttery, golden, and spiced with authentic Ethiopian flavours. Baked fresh, packed with care — no shortcuts, no artificial anything.",
+    subtitle: "Your Everyday Indulgence, Perfected",
+    tagline: "The warmth you can taste.",
+    oneLiner: "Simple ingredients, baked to golden perfection. A timeless treat made for every moment.",
+    description: "Simple ingredients, baked to golden perfection. A timeless treat made for every moment.",
     imageUrl: "/cookies-box-clean.jpg",
     detailImages: [
       "/cookies-box-lifestyle.jpg",
     ],
     sourcingStory: "Each batch is made with quality wheat flour, real butter, and spices sourced directly from our own Ethiopian Spices line. What goes in matters — so we use the same ingredients we'd serve at our own table.",
     howItsMade: [
-      "Premium Ingredients Selected: Quality wheat flour, real butter, and our own house spices — no substitutes.",
-      "Dough Mixed by Hand: Blended to the right texture — soft enough to shape, firm enough to hold.",
-      "Shaped & Portioned: Each cookie is carefully formed for even baking.",
-      "Oven-Baked: Golden on the outside, tender within. Timed by eye, not just by clock.",
-      "Cooled & Packed: Sealed fresh in our branded boxes — no preservatives added.",
+      "Carefully Selected Ingredients: Only the best makes it in. Fresh butter, premium flour, and rich add-ins. No compromises.",
+      "Small-Batch Mixing: Each batch is mixed with precision. Texture matters. Balance matters. Every detail matters.",
+      "Hand-Portioned Dough: Every cookie is shaped with care. Not rushed. Not automated. Just the right size, every time.",
+      "Baked to Golden Perfection: We don't just bake — we watch, we smell, we know. The moment the edges turn golden, they're ready.",
+      "Rested & Ready: Fresh from the oven, then cooled just enough to lock in that soft center and perfect bite.",
     ],
     benefits: [
       "Real Butter Baked – No margarine, no shortening substitutes.",
@@ -301,7 +314,7 @@ export const STATIC_PRODUCTS: Product[] = [
     tagline: "Instant energy. Ancient recipe.",
     oneLiner: "Pre-digested starch for easy fuel. Mix with water or milk — no cooking. Unforgettable comfort, ready in seconds.",
     description: "Pre-digested starch for easy fuel. Mix with water or milk — no cooking. Unforgettable comfort, ready in seconds.",
-    imageUrl: "https://superboostup.com/AdulisFarm/wp-content/uploads/2026/02/Beso-300x300.png",
+    imageUrl: "/beso-flour.jpg",
     sourcingStory: "The same highland barley as our Kolo — cleaned, roasted, and milled into fine, fragrant flour. Ethiopia's original fast food. Unchanged for centuries.",
     howItsMade: [
       "Cleaned & Sorted: Only the best barley proceeds.",
@@ -328,7 +341,7 @@ export const STATIC_PRODUCTS: Product[] = [
     tagline: "The food of recovery.",
     oneLiner: "Reserved for elders, mothers, and the healing. The most easily digestible food in Ethiopian tradition. Unforgettable gentleness.",
     description: "Reserved for elders, mothers, and the healing. The most easily digestible food in Ethiopian tradition. Unforgettable gentleness.",
-    imageUrl: "https://superboostup.com/AdulisFarm/wp-content/uploads/2026/02/Bula-300x300.png",
+    imageUrl: "/bula-starch.jpg",
     sourcingStory: "Harvested from enset plants in southern Ethiopia, processed by the same traditional fermentation and squeezing methods used for centuries. This is not a commodity. It is a cultural trust.",
     howItsMade: [
       "Decorticated: The pseudo stems are carefully stripped.",
@@ -370,6 +383,47 @@ export const STATIC_PRODUCTS: Product[] = [
     ],
   },
   {
+    id: 11,
+    name: "White Vinegar",
+    category: "Condiments",
+    badge: "Food Grade",
+    subtitle: "Modern Purity. Clinical Precision.",
+    tagline: "The standard of clarity.",
+    oneLiner: "Food-grade precision for a crisp, consistent finish. No impurities, just performance.",
+    description: "Food-grade precision for a crisp, consistent finish. No impurities, just performance.",
+    imageUrl: "/white-vinegar.jpg",
+    howItsMade: [
+      "Precision Formulated: We use a modern automated process to blend high-grade acetic acid with purified water.",
+      "Machine-Balanced: Continuous monitoring ensures a perfectly consistent acidity level in every bottle.",
+    ],
+    benefits: [
+      "Consistent Results – Guaranteed acidity for perfect pickling.",
+      "Zero Additives – No sugar, no coloring, and no artificial aromas.",
+      "Multi-Purpose Power – A food-safe essential for culinary, preservation, and eco-friendly cleaning.",
+    ],
+  },
+  {
+    id: 12,
+    name: "Table Salt",
+    category: "Condiments",
+    badge: "Refined",
+    subtitle: "Pure. Fine. Essential.",
+    tagline: "The foundation of every flavor.",
+    oneLiner: "Refined to perfection for an even, quick-dissolving season.",
+    description: "Refined to perfection for an even, quick-dissolving season.",
+    imageUrl: "/baltna-spices.webp",
+    howItsMade: [
+      "Refined & Purified: Processed to remove harsh bitterness and impurities.",
+      "Evenly Milled: Finely textured for consistent distribution across your dishes.",
+      "Moisture-Protected: Sealed to stay free-flowing and clump-free.",
+    ],
+    benefits: [
+      "Pure & Clean – No harsh bitterness or impurities.",
+      "Even Distribution – Finely milled for consistent seasoning every time.",
+      "Free-Flowing – Moisture-protected to prevent clumping.",
+    ],
+  },
+  {
     id: 100,
     name: "Ethiopian Baltna",
     category: "Spice Blends",
@@ -380,5 +434,201 @@ export const STATIC_PRODUCTS: Product[] = [
     imageUrl: "/baltna-spices.webp",
     howItsMade: [],
     benefits: [],
+    baltnaItems: [
+      {
+        name: "Teff",
+        subtitle: "The Ancient Grain",
+        tagline: "Gluten-free before gluten-free was a label.",
+        oneLiner: "3,000 years of nourishment. Highest iron and calcium of any grain. Unforgettable heritage in every spoonful.",
+        howItsMade: [
+          "Gently Harvested: Careful collection to preserve the tiny grain's integrity.",
+          "Multi-Stage Cleaned: Chaff, stones, and foreign seeds are removed through careful cleaning.",
+          "Stone-Milled: Low-temperature milling preserves the bran and germ. Whole-grain only — we don't sift out the nutritious parts.",
+          "Packed to preserve freshness — no preservatives.",
+        ],
+        benefits: [
+          "Naturally Gluten-Free – Safe for celiac and gluten-sensitive individuals.",
+          "Exceptional Iron – Significantly higher than wheat, rice, or corn.",
+          "Calcium-Rich – Among the highest calcium levels of any cereal grain.",
+          "Low Glycemic Index – Complex starch releases glucose slowly. Sustained energy.",
+          "Complete Amino Acids – Contains all eight essential amino acids.",
+        ],
+      },
+      {
+        name: "Beso",
+        subtitle: "Roasted Barley Flour",
+        tagline: "Instant energy. Ancient recipe.",
+        oneLiner: "Pre-digested starch for easy fuel. Mix with water or milk — no cooking. Unforgettable comfort, ready in seconds.",
+        howItsMade: [
+          "Cleaned & Sorted: Only the best barley proceeds.",
+          "Slow Roasted: Deep golden-brown, fully dry, intensely aromatic.",
+          "Cooled Completely: Prevents clumping during milling.",
+          "Blended Lightly: Cinnamon, salt, and roasted peanut are added with a gentle hand.",
+          "Stone-Ground: Fine, free-flowing flour that dissolves instantly.",
+          "Sieved: Uniform particle size for consistent texture.",
+        ],
+        benefits: [
+          "Pre-Digested Starch – Roasting breaks down complex chains. Easy energy, fast.",
+          "Shelf Stable – Months without refrigeration. Ancient preservation.",
+          "Fiber Rich – Slowly digestible, keeps you satisfied.",
+          "Beta-Glucans – Naturally supports healthy cholesterol levels.",
+          "No Cooking Required – Mix with water or milk. Ready in seconds.",
+        ],
+        traditionalUse: [
+          "Mixed with water or milk for instant porridge — no cooking required.",
+          "Rolled into balls with spiced butter. The traveller's companion with afternoon tea.",
+        ],
+      },
+      {
+        name: "Bula",
+        subtitle: "Ensete Starch",
+        tagline: "The food of recovery.",
+        oneLiner: "Reserved for elders, mothers, and the healing. The most easily digestible food in Ethiopian tradition.",
+        howItsMade: [
+          "Decorticated: The pseudo stems are carefully stripped.",
+          "Fermented & Pressed: Repeated extraction separates the pure starch.",
+          "Sun-Dried: Spread in thin layers until the granules turn pure white.",
+          "Milled to Powder: Fine, silky, ready to prepare.",
+        ],
+        benefits: [
+          "Exceptionally Digestible – Gentle even for distressed stomachs.",
+          "Neutral Flavour – Accepts sweet or savory additions. Adaptable.",
+          "Traditional Prescription – Used for gastric distress and recovery from illness.",
+          "Naturally Gluten-Free – Not modified. Not processed. Just pure starch.",
+          "FODMAP Friendly – Low in fermentable carbohydrates.",
+        ],
+        traditionalUse: [
+          "Reserved for those who need gentleness — postpartum mothers, elders, the recovering ill.",
+          "Considered the most easily digestible food in Ethiopian tradition.",
+        ],
+      },
+      {
+        name: "Shiro",
+        subtitle: "Roasted Legume Flour with Berbere and Spices",
+        tagline: "The 15-minute wot.",
+        oneLiner: "Protein-packed, vegan, deeply spiced. No preservatives — just roasted chickpeas, our house berbere, herbs and spices.",
+        howItsMade: [
+          "Legumes Roasted: Until fully dry, deeply aromatic, and easy to grind.",
+          "Herbs & Spices Added: Onion, garlic, ginger, and our signature berbere blend.",
+          "Spices Dried: Each at its optimal temperature.",
+          "Blended & Ground: Specific ratios for mild, spicy, and extra-fine textures.",
+        ],
+        benefits: [
+          "High Plant Protein – 20–25% protein from roasted legumes.",
+          "Fiber-Rich – Supports digestion and satiety.",
+          "No Preservatives – Roasting is the preservation. Clean label, clean ingredients.",
+          "Customizable Heat – Choose your spice level. You're in control.",
+          "Encourages Home Cooking – Faster than takeout. More nourishing than processed convenience foods.",
+        ],
+        traditionalUse: [
+          "The foundation of shiro wot, a daily staple in Ethiopian households.",
+          "Quick cooking: simmer with water, oil, and onion. Ready in 15 minutes.",
+          "Vegan, protein-forward, deeply satisfying.",
+        ],
+      },
+      {
+        name: "Berbere",
+        subtitle: "Ethiopian Spice Blend",
+        tagline: "The heartbeat of Ethiopian cuisine.",
+        oneLiner: "An intricate blend of fiery chilies, sacred aromatics, and ancient sun-drying traditions. Intense complexity, ready to transform any dish.",
+        howItsMade: [
+          "Selected & De-seeded: Premium red chili peppers are harvested and washed thoroughly.",
+          "Sun-Dried: Spread under the highland sun until completely crisp and vibrant red.",
+          "Slow Toasted: Sacred spices — garlic, ginger, sacred basil (besobela), korarima, habesha onion, black cumin, white cumin — are gently toasted to unlock their essential oils.",
+          "Blended with Precision: The sun-dried chilies and aromatic spices are combined in a time-tested ratio.",
+          "Stone-Ground: Milled into a fine, uniform, free-flowing powder.",
+          "Sieved & Cured: Sifted for perfect texture and allowed to mature slightly so the flavors fuse beautifully.",
+        ],
+        benefits: [
+          "Metabolism Booster – Capsaicin from the red chilies naturally supports metabolic health.",
+          "Packed with Antioxidants – A powerhouse of whole spices that combat oxidative stress.",
+          "Digestive Support – Traditional spices like ginger, korarima, and fenugreek aid in smooth digestion.",
+          "Vitamin Rich – High in Vitamins A and C from the sun-dried chili peppers.",
+          "Anti-Inflammatory Properties – Garlic and sacred basil provide natural immune-supporting benefits.",
+        ],
+        traditionalUse: [
+          "The essential foundation for Wot (Ethiopian stews) — creating the rich, complex base for doro wot, misir wot, and beef stews.",
+          "Mixed with oil or spiced butter (niter kibbeh) to make awaze, a rich paste used as a dipping sauce or marinade.",
+          "A versatile dry rub for meats, fish, or sprinkled over roasted vegetables for an authentic Ethiopian kick.",
+        ],
+      },
+      {
+        name: "Mitmita",
+        subtitle: "Pure fire. Authentic flavor.",
+        tagline: "Pure fire. Authentic flavor.",
+        oneLiner: "A finely ground, bright orange-red blend that brings the true, searing heat of authentic Ethiopian culture straight to your kitchen.",
+        howItsMade: [
+          "Chilies are sun-dried until they rattle, then coarsely crushed — never powdered to dust.",
+          "Different spices are added whole to the blend.",
+          "The entire blend is gently warmed to bloom the oils.",
+        ],
+        keyIngredients: [
+          "Bird's Eye Chili Peppers (Mitmita Chilis): Small, exceptionally hot chilis that give the blend its signature punch.",
+          "Cardamom (Korerima): Ethiopian sacred cardamom provides a warm, resinous undertone.",
+          "Cloves: Adds a sweet, pungent aroma that cuts through the heat.",
+          "Salt: Balances the high heat and enhances the spices.",
+        ],
+        benefits: [
+          "High Capsaicin Content – Traditionally applied as a stimulant and to improve circulation.",
+          "Vitamin C Retained – Careful low-heat drying preserves vitamins from fresh peppers.",
+          "Fierce, Clean Heat – Intense heat that arrives quickly and fades cleanly.",
+        ],
+        culinaryUse: [
+          "Kitfo (ክትፎ): The absolute essential seasoning for Ethiopia's traditional minced raw beef dish.",
+          "Dulet (ዱለት): Mixed into seasoned tripe and beef.",
+          "As a Condiment: Served on the side for dipping raw beef (Tere Siga) or sprinkling over Firfir and Injera for an extra kick of heat.",
+        ],
+      },
+      {
+        name: "Telba (Flaxseed)",
+        subtitle: "Flaxseed",
+        tagline: "Ancient wellness in every seed.",
+        oneLiner: "Cultivated high-quality, oil-rich seeds from the cool, high-altitude crop rotations of the Ethiopian highlands.",
+        howItsMade: [
+          "Sun-dried in the Ethiopian highlands until fully dry.",
+          "Meticulously winnowed to remove chaff and impurities.",
+          "Lightly toasted to develop a rich, nutty aroma.",
+          "Milled to order — whole or ground.",
+        ],
+        benefits: [
+          "Omega-3 Rich – Exceptionally high in alpha-linolenic acid (ALA), an essential fatty acid.",
+          "Soluble Fiber – Supports smooth digestion and satiety.",
+          "Anti-Inflammatory – Deeply rooted in traditional remedies to reduce inflammation and restore strength.",
+          "Digestive Wellness – Traditionally used to soothe and heal the digestive system.",
+        ],
+      },
+      {
+        name: "Genfo",
+        subtitle: "The Ultimate Porridge Blend",
+        tagline: "The ultimate porridge blend.",
+        oneLiner: "Premium, hearty grains sustainably harvested from the optimal highland growing regions of Ethiopia.",
+        howItsMade: [
+          "Select quality barley, broad bean and oats, thoroughly washed and sun-dried.",
+          "Roasted until deeply golden and aromatic.",
+          "Roasted peanut, clove and salt added before being finely milled.",
+        ],
+        benefits: [
+          "Energy-Dense – Packed with complex carbohydrates and essential nutrients for sustained vitality.",
+          "Recovery Food – Traditionally served to new mothers to accelerate recovery, rebuild strength, and boost vitality.",
+          "Comforting & Nourishing – Toasted, robust, deeply comforting profile.",
+        ],
+      },
+      {
+        name: "Atmit",
+        subtitle: "The Nourishing Comfort Gruel",
+        tagline: "The nourishing comfort gruel.",
+        oneLiner: "Specially selected, nutrient-rich ancient grains cultivated across the fertile highland fields.",
+        howItsMade: [
+          "A precise blend of roasted barley, teff, oats, corn, safflower seed, flaxseed, sesame seed and wheat.",
+          "Finely ground into a smooth, silky flour designed for effortless digestion.",
+        ],
+        benefits: [
+          "Rich in Soluble Fiber – Vitamins and minerals for complete nourishment.",
+          "Gentle & Digestible – Highly regarded in traditional wellness as a soothing drink for mothers and infants.",
+          "Strengthening – A highly digestible, strengthening nutritional lift for anyone in recovery.",
+          "Creamy & Comforting – Mildly sweet, effortlessly smooth.",
+        ],
+      },
+    ],
   },
 ];

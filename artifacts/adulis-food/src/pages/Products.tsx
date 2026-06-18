@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { STATIC_PRODUCTS } from "@/data/products";
 import { ProductImage } from "@/components/ProductImage";
 
-const CATEGORY_KEYS = ["All", "Snacks", "Spreads", "Nuts", "Spices", "Grains", "Flours", "Spice Blends"];
+const CATEGORY_KEYS = ["All", "Snacks", "Spreads", "Nuts", "Spices", "Grains", "Flours", "Spice Blends", "Condiments"];
 
 export default function Products() {
   const { t } = useTranslation();

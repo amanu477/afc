@@ -28,6 +28,7 @@ export default function ProductDetail() {
   const nextProduct = STATIC_PRODUCTS[currentIdx + 1];
   const imgs = product.detailImages ?? [];
   const hasSpices = product.spices && product.spices.length > 0;
+  const hasBaltnaItems = product.baltnaItems && product.baltnaItems.length > 0;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -213,6 +214,142 @@ export default function ProductDetail() {
                         <p className="text-sm text-muted-foreground leading-relaxed">{spice.healthBenefit}</p>
                       </div>
                     </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* BALTNA ITEMS SECTION — only for Ethiopian Baltna */}
+      {hasBaltnaItems && (
+        <section className="py-20 bg-muted/30 border-y border-border/40">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-3">
+                What's Inside Baltna
+              </h2>
+              <p className="text-muted-foreground mb-10">
+                Ethiopia's original functional foods — each product a centuries-old tradition, made with no additives, no shortcuts.
+              </p>
+
+              <div className="space-y-8">
+                {product.baltnaItems!.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="bg-background rounded-2xl border border-border/60 overflow-hidden"
+                  >
+                    {/* Header */}
+                    <div className="flex items-start gap-4 p-6 border-b border-border/40 bg-primary/5">
+                      <div className="shrink-0 w-10 h-10 rounded-full bg-primary/15 border border-primary/25 flex items-center justify-center">
+                        <Leaf className="w-4 h-4 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-display font-bold text-xl text-foreground">{item.name}</h3>
+                        {item.subtitle && (
+                          <p className="text-sm text-primary font-medium mt-0.5">{item.subtitle}</p>
+                        )}
+                        <p className="text-xs text-muted-foreground italic mt-1">{item.tagline}</p>
+                      </div>
+                    </div>
+
+                    <div className="p-6 border-b border-border/40">
+                      <p className="text-muted-foreground leading-relaxed">{item.oneLiner}</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x divide-border/40">
+                      {/* How It's Made */}
+                      {item.howItsMade.length > 0 && (
+                        <div className="p-6">
+                          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">How It's Made</p>
+                          <ol className="space-y-2">
+                            {item.howItsMade.map((step, j) => {
+                              const [title, ...rest] = step.split(":");
+                              const body = rest.join(":").trim();
+                              return (
+                                <li key={j} className="flex gap-3 items-start">
+                                  <span className="shrink-0 w-5 h-5 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center mt-0.5">
+                                    {j + 1}
+                                  </span>
+                                  <span className="text-sm text-muted-foreground leading-relaxed">
+                                    {body ? <><strong className="text-foreground/80">{title}:</strong> {body}</> : step}
+                                  </span>
+                                </li>
+                              );
+                            })}
+                          </ol>
+                        </div>
+                      )}
+
+                      {/* Benefits */}
+                      {item.benefits.length > 0 && (
+                        <div className="p-6 bg-muted/20">
+                          <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Why It's Good for You</p>
+                          <ul className="space-y-2">
+                            {item.benefits.map((b, j) => (
+                              <li key={j} className="flex gap-3 items-start">
+                                <CheckCircle2 className="shrink-0 w-4 h-4 text-primary mt-0.5" />
+                                <span className="text-sm text-muted-foreground leading-relaxed">{b}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Key Ingredients (Mitmita) */}
+                    {item.keyIngredients && item.keyIngredients.length > 0 && (
+                      <div className="p-6 border-t border-border/40">
+                        <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Key Ingredients</p>
+                        <ul className="space-y-2">
+                          {item.keyIngredients.map((ing, j) => {
+                            const [name, ...rest] = ing.split(":");
+                            const desc = rest.join(":").trim();
+                            return (
+                              <li key={j} className="flex gap-3 items-start">
+                                <span className="shrink-0 w-5 h-5 rounded-full bg-secondary/20 text-secondary text-xs font-bold flex items-center justify-center mt-0.5">{j + 1}</span>
+                                <span className="text-sm text-muted-foreground leading-relaxed">
+                                  {desc ? <><strong className="text-foreground/80">{name}:</strong> {desc}</> : ing}
+                                </span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Traditional Use or Culinary Use */}
+                    {((item.traditionalUse && item.traditionalUse.length > 0) || (item.culinaryUse && item.culinaryUse.length > 0)) && (
+                      <div className="p-6 border-t border-border/40 bg-secondary/5">
+                        <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">
+                          {item.culinaryUse ? "Culinary Use" : "Traditional Use"}
+                        </p>
+                        <ul className="space-y-2">
+                          {(item.culinaryUse ?? item.traditionalUse)!.map((use, j) => {
+                            const [title, ...rest] = use.split(":");
+                            const body = rest.join(":").trim();
+                            return (
+                              <li key={j} className="flex gap-3 items-start">
+                                <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-primary mt-2" />
+                                <span className="text-sm text-muted-foreground leading-relaxed">
+                                  {body ? <><strong className="text-foreground/80">{title}:</strong> {body}</> : use}
+                                </span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    )}
                   </motion.div>
                 ))}
               </div>
