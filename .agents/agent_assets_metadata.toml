@@ -6,3 +6,9 @@ id = "0BHg6OAAyA0324k66sbRH"
 uri = "file://adulisfoodcomplex-website.tar.gz"
 type = "unspecified"
 title = "adulisfoodcomplex-website.tar.gz"
+
+[[outputs]]
+id = "2zKTcER9RMyW4VRkzqMH0"
+uri = "file://adulis-hostinger.tar.gz"
+type = "unspecified"
+title = "Adulis Food Complex — Hostinger Static Files"

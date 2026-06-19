@@ -129,13 +129,13 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
-                <a href="mailto:hello@adulisfood.com" className="hover:text-primary transition-colors">
-                  hello@adulisfood.com
+                <a href="mailto:adulis@adulisfoodcomplex.com" className="hover:text-primary transition-colors">
+                  adulis@adulisfoodcomplex.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-primary shrink-0" />
-                <span>+251 (0) 911 000 000</span>
+                <span>+251911401168 / +251911373333</span>
               </li>
             </ul>
           </div>
