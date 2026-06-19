@@ -84,69 +84,128 @@ const en = {
     },
   },
   about: {
-    ourStoryBadge: "Our Story",
-    heroTitle: "Who is Adulis Food?",
+    heroBadge: "Rooted in Ethiopia. Built on trust. Shared with the world.",
+    heroTitle: "We make food you can trust.",
+    heroHighlight: "Every day. Every product.",
     heroDesc:
-      "We are dedicated to bringing the heart of Ethiopian tradition to your table — a premier food processing company built on heritage, quality, and community.",
-    aboutBadge: "About Us",
-    rootedTitle: "Rooted in Ethiopian\nTradition & Heritage",
-    desc1:
-      "We are a premier food processing company specializing in high-quality roasted grains, snacks, and pantry essentials. Our mission is simple: to provide authentic, hygienic, and delicious products that honor our culinary heritage while meeting modern standards of quality.",
-    desc2:
-      "Adulis Food Complex is a nutritional leader in fortified baby food, wholesome snacks, baking ingredients, and humanitarian relief products. We provide these essentials to humanitarian organizations, bakeries, retailers, and families across East Africa.",
-    desc3:
-      "From nutritional expertise to quality assurance to sustainable sourcing — our value-added services are an essential ingredient in our partners' impact on communities across the region.",
-    seeProducts: "See Our Products",
+      "Based in Ethiopia, we manufacture authentic dry foods — kolo, spices, teff, peanut butter, and traditional staples — the way they should be made: naturally, honestly, and for everyone.",
+
+    whoWeAreBadge: "Who We Are",
+    whoWeAreTitle: "We make the food we grew up loving.",
     yearsOfExcellence: "Years of Excellence",
-    whatDrivesUs: "What Drives Us",
-    coreValues: "Our Core Values",
-    mission: {
-      title: "Our Mission",
-      text: "To provide authentic, hygienic, and delicious products that honor our culinary heritage while meeting modern standards of quality — nourishing families from Ethiopia to the world.",
-    },
-    vision: {
-      title: "Our Vision",
-      text: "To become the leading Ethiopian food brand globally, bringing the warmth of Ethiopian tradition to every kitchen table — whether in Addis Ababa or across the diaspora.",
-    },
-    people: {
-      title: "Our People",
-      text: "We are a family of passionate food craftspeople, nutritionists, and community advocates united by a shared love for Ethiopian heritage and a commitment to nourishing lives.",
-    },
-    whatWeDo: "What We Do",
-    servicesTitle: "Our Services",
-    servicesDesc:
-      "From nutritional expertise to quality assurance to sustainable sourcing and more, our value-added services are an essential ingredient in our partners' impact.",
-    services: {
-      babyFood: {
-        title: "Fortified Baby Food",
-        desc: "Nutrient-rich formulas designed for healthy early childhood development across East Africa.",
-      },
-      baking: {
-        title: "Baking Ingredients",
-        desc: "Premium grade flours, grains, and ingredients for bakeries and families.",
-      },
-      snacks: {
-        title: "Wholesome Snacks",
-        desc: "Traditional Ethiopian flavors packed with modern quality and hygiene standards.",
-      },
-      relief: {
-        title: "Relief Products",
-        desc: "Specialized nutrition products for humanitarian organizations and relief efforts.",
-      },
-      quality: {
-        title: "Quality Assurance",
-        desc: "Rigorous testing at every step guaranteeing the highest safety standards.",
-      },
-      sourcing: {
-        title: "Sustainable Sourcing",
-        desc: "Ethical partnerships with local farmers for a better, greener future.",
-      },
-    },
-    careersBadge: "Careers",
-    careersTitle: "Come do good with us",
-    careersDesc:
-      "For many of us, Adulis is more than just a job. It's a place we feel excited to come each day because we're part of a family doing good in the world. Ready to be part of something meaningful?",
-    getInTouch: "Get in Touch",
+    whoWeAreP1:
+      "We grew up eating real kolo, peanut, genuine shiro, spices that smelled like someone's grandmother was in the kitchen. When we started this company, we asked one question: how do we make food this good available to everyone, every day, at a fair price?",
+    whoWeAreP2:
+      "That question led us everywhere — to highland farms, to trusted suppliers, to our own facility where we could control every step. We invested in facilities that could handle traditional foods with modern hygiene. We hired people who care about quality because they care about the food.",
+    whoWeAreP3:
+      "Today, we supply homes and businesses across Ethiopia and beyond. But the mission has not changed: to make authentic, nourishing food accessible to everyone who wants it.",
+    seeProducts: "See Our Products",
+    rules: [
+      "Nothing artificial. Ever.",
+      "No hidden ingredients.",
+      "No prices that make you wince.",
+      "The same quality, batch after batch.",
+    ],
+
+    visionBadge: "What We Stand For",
+    visionTitle: "Our Vision",
+    visionDesc: "To bring the true taste of Ethiopia to every table — authentically, and without compromise.",
+    visionP1: "We want the grandmother in Addis to find our kolo and recognize her own.",
+    visionP2: "We want the student abroad to open our shiro and smell their mother's kitchen.",
+    visionP3: "We want the family on any budget to afford food that is good for them.",
+    focusBadge: "Our Focus",
+    focuses: ["Unchanging Quality", "Radical Honesty", "Tradition with Integrity", "Safety Always"],
+
+    qualityBadge: "Our Impact",
+    qualityTitle: "Impact on Quality",
+    qualityDesc: "A real manufacturing facility designed for one purpose: making safe, consistent, delicious food.",
+    prodFloorLabel: "Production Floor",
+    prodFloorCaption: "Controlled, sanitized daily, organized by workflow.",
+    machineryImgLabel: "Machinery",
+    machineryImgCaption: "Modern roasters, grinders, and packaging equipment.",
+    qualityPillarTitles: ["Production Area", "Machinery", "People"],
+    qualityPillarDescs: [
+      "Controlled, sanitized daily, organized by workflow. Every batch moves from raw ingredient to finished product without cross-contamination.",
+      "Modern roasters, grinders, and packaging equipment. Maintained daily. Calibrated for precision.",
+      "Trained staff who know their machines and know their food. Many of us grew up eating what we now make.",
+    ],
+
+    safetyBadge: "Our Impact",
+    safetyTitle: "Impact on Safety",
+    safetyP1:
+      "Every peanut tested for aflatoxin. Every spice checked for purity. Every product formulated with one rule: nothing artificial, ever.",
+    safetyP2:
+      "We maintain an on-site lab where we test for moisture, purity, consistency, and contaminants. If a batch does not meet our standards, it does not leave this building.",
+    safetyP3: "We do not outsource our quality. We own it.",
+    labBadgeTitle: "On-site Laboratory",
+    labBadgeDesc: "Clean surfaces, professional equipment, technician at work — every batch verified.",
+    labImageLabel: "Quality Control Lab",
+    labImageCaption: "Every batch tested before it leaves this building.",
+
+    scienceBadge: "Science & Safety",
+    scienceTitle: "Our Quality Control Laboratory",
+    scienceP1:
+      "Every product leaving our facility passes through a fully equipped in-house laboratory. Our team of food scientists and quality control specialists test for moisture content, microbial safety, and nutritional consistency.",
+    scienceP2:
+      "We use internationally certified instruments — from binocular microscopes for microbiological inspection to precision autoclaves for sterilization — ensuring that every batch meets Ethiopian and international food safety standards.",
+    labTeamLabel: "Quality Control Team",
+    labTeamCaption: "Ensuring every product meets our exacting standards before it leaves the facility.",
+    labEquipmentTitles: [
+      "Magnus Theia Microscope",
+      "Temperature Magnetic Stirrer",
+      "Pressure Autoclave Sterilizer",
+      "Cologne-Lab Drying Oven",
+    ],
+    labEquipmentDescs: [
+      "High-resolution binocular microscope used for microbiological inspection of raw materials and finished products.",
+      "85-2A precision temperature-controlled magnetic stirrer used for chemical analysis and moisture determination testing.",
+      "Stainless steel autoclave sterilizes lab instruments and culture media, ensuring a contamination-free testing environment.",
+      "Programmable laboratory oven used for moisture content analysis and drying tests on food samples.",
+    ],
+
+    machineryBadge: "Inside Our Facility",
+    machineryTitle: "Our Production Machinery",
+    machineryP1:
+      "Our production line is purpose-built for Ethiopian traditional foods — combining modern industrial equipment with the precision that handcrafted food demands. Every machine is maintained daily and calibrated to exacting standards.",
+    machineryP2:
+      "From heavy-duty mixing tanks to high-speed vertical form-fill-seal packaging lines, our machinery lets us scale without ever compromising consistency or hygiene.",
+    machineryOverviewLabel: "Full Production Floor",
+    machineryOverviewCaption: "Overhead view of our integrated manufacturing line.",
+    machineryCardTitles: [
+      "CEPi Mixing Tank",
+      "ABB High-Speed Mixer",
+      "MARKMAK Flowwrap Machine",
+      "Control & Monitoring Panel",
+    ],
+    machineryCardDescs: [
+      "Industrial-grade CEPi stainless steel mixing tanks process raw ingredients at high volume with precise temperature control.",
+      "ABB-powered mixer delivers consistent blending of spices, grains, and legumes — maintaining uniform texture batch after batch.",
+      "Vertical form-fill-seal packaging machine wraps and seals products hygienically at scale, preserving freshness without preservatives.",
+      "Centralised control panels allow our technicians to monitor roasting temperature, conveyor speed, and packaging output in real time.",
+    ],
+
+    teamBadge: "Our Impact",
+    teamTitle: "Our Team",
+    teamP1:
+      "Farmers, sorters, roasters, packers, testers, drivers. Many of us grew up eating the foods we now make. We know what kolo should taste like. We know how berbere should smell. That knowledge cannot be programmed into a machine.",
+    teamP2: "Every hand-sorted peanut, every checked roast, every signed-off batch carries our attention.",
+    teamQuote: "We eat what we make.",
+    teamQuoteSub: "So should you.",
+
+    promiseBadge: "Our Commitment",
+    promiseTitle: "Our Promise",
+    promiseTitles: ["Nothing artificial.", "Quality you can count on.", "Prices that make sense.", "Honest answers."],
+    promiseDescs: [
+      "If it's not food, it's not in our products.",
+      "Taste and trust, batch after batch.",
+      "Good food for everyone, not just some.",
+      "Ask us anything. We will tell you the truth.",
+    ],
+
+    ctaBadge: "Get in Touch",
+    ctaTitle: "Any questions? Ask us.",
+    ctaDesc: "We will tell you the truth. About our ingredients, our process, our prices — everything.",
+    ctaButton: "Contact Us",
   },
   shop: {
     badge: "Premium Ethiopian Products",
@@ -178,6 +237,8 @@ const en = {
       "We provide fortified baby food, baking ingredients, snacks, and specialized relief products to humanitarian organizations, bakeries, retailers, and families across East Africa.",
     partnerWithUs: "Partner With Us",
     enquireNow: "Order Now",
+    learnMore: "Learn More",
+    orderNow: "Order Now",
     features: {
       kolo: ["100% Natural Barley", "No Artificial Flavors", "Rich in Fiber", "Traditional Recipe"],
       daboKolo: ["Baked Not Fried", "Traditional Spices", "Perfect for Sharing", "Long Shelf Life"],

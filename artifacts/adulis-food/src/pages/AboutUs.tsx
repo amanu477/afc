@@ -20,47 +20,42 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
-const focuses = [
-  { icon: ShieldCheck, label: "Unchanging Quality" },
-  { icon: Handshake, label: "Radical Honesty" },
-  { icon: Sparkles, label: "Tradition with Integrity" },
-  { icon: Lock, label: "Safety Always" },
-];
-
-const promises = [
-  {
-    icon: CheckCircle2,
-    title: "Nothing artificial.",
-    desc: "If it's not food, it's not in our products.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Quality you can count on.",
-    desc: "Taste and trust, batch after batch.",
-  },
-  {
-    icon: Handshake,
-    title: "Prices that make sense.",
-    desc: "Good food for everyone, not just some.",
-  },
-  {
-    icon: Sparkles,
-    title: "Honest answers.",
-    desc: "Ask us anything. We will tell you the truth.",
-  },
-];
-
-const rules = [
-  "Nothing artificial. Ever.",
-  "No hidden ingredients.",
-  "No prices that make you wince.",
-  "The same quality, batch after batch.",
-];
+const FOCUS_ICONS = [ShieldCheck, Handshake, Sparkles, Lock];
+const PROMISE_ICONS = [CheckCircle2, ShieldCheck, Handshake, Sparkles];
+const QUALITY_ICONS = [Wheat, ShieldCheck, Users];
+const LAB_ICONS = [Microscope, FlaskConical, Wind, Thermometer];
+const MACHINERY_ICONS = [Layers, Settings, Package, Gauge];
 
 export default function AboutUs() {
+  const { t } = useTranslation();
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  const focuses = t("about.focuses", { returnObjects: true }) as string[];
+  const rules = t("about.rules", { returnObjects: true }) as string[];
+  const qualityPillarTitles = t("about.qualityPillarTitles", { returnObjects: true }) as string[];
+  const qualityPillarDescs = t("about.qualityPillarDescs", { returnObjects: true }) as string[];
+  const labEquipmentTitles = t("about.labEquipmentTitles", { returnObjects: true }) as string[];
+  const labEquipmentDescs = t("about.labEquipmentDescs", { returnObjects: true }) as string[];
+  const machineryCardTitles = t("about.machineryCardTitles", { returnObjects: true }) as string[];
+  const machineryCardDescs = t("about.machineryCardDescs", { returnObjects: true }) as string[];
+  const promiseTitles = t("about.promiseTitles", { returnObjects: true }) as string[];
+  const promiseDescs = t("about.promiseDescs", { returnObjects: true }) as string[];
+
+  const labEquipmentImages = [
+    "/factory/lab-microscope.webp",
+    "/factory/lab-magnetic-stirrer.webp",
+    "/factory/lab-autoclave.webp",
+    "/factory/lab-oven.webp",
+  ];
+  const machineryCardImages = [
+    "/factory/factory-cepi-tank.webp",
+    "/factory/factory-abb-mixer.webp",
+    "/factory/factory-flowwrap-wide.webp",
+    "/factory/factory-control-panel.webp",
+  ];
 
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
@@ -90,11 +85,11 @@ export default function AboutUs() {
               transition={{ delay: 0.3 }}
               className="text-primary font-bold tracking-widest uppercase text-sm mb-5 bg-primary/20 inline-block px-4 py-1.5 rounded-full border border-primary/30"
             >
-              Rooted in Ethiopia. Built on trust. Shared with the world.
+              {t("about.heroBadge")}
             </motion.p>
 
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
-              {["We", "make", "food", "you", "can", "trust."].map((word, i) => (
+              {t("about.heroTitle").split(" ").map((word, i) => (
                 <motion.span
                   key={i}
                   className="inline-block mr-[0.25em]"
@@ -112,7 +107,7 @@ export default function AboutUs() {
                 transition={{ delay: 0.8 }}
                 className="text-primary"
               >
-                Every day. Every product.
+                {t("about.heroHighlight")}
               </motion.span>
             </h1>
 
@@ -129,7 +124,7 @@ export default function AboutUs() {
               transition={{ delay: 1, duration: 0.8 }}
               className="text-xl text-white/85 leading-relaxed max-w-2xl mx-auto"
             >
-              Based in Ethiopia, we manufacture authentic dry foods — kolo, spices, teff, peanut butter, and traditional staples — the way they should be made: naturally, honestly, and for everyone.
+              {t("about.heroDesc")}
             </motion.p>
           </motion.div>
         </div>
@@ -140,7 +135,6 @@ export default function AboutUs() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            {/* Image — company building */}
             <motion.div
               initial={{ opacity: 0, x: -50, rotate: -3 }}
               whileInView={{ opacity: 1, x: 0, rotate: 0 }}
@@ -163,12 +157,11 @@ export default function AboutUs() {
                 className="absolute -bottom-8 -right-8 bg-primary text-white p-7 rounded-3xl shadow-[0_20px_40px_rgba(194,99,33,0.3)] z-20"
               >
                 <div className="text-5xl font-display font-bold mb-1">10+</div>
-                <div className="text-white/90 text-sm font-medium uppercase tracking-wider">Years of Excellence</div>
+                <div className="text-white/90 text-sm font-medium uppercase tracking-wider">{t("about.yearsOfExcellence")}</div>
               </motion.div>
               <div className="absolute -z-10 -top-6 -left-6 w-full h-full border-2 border-primary/20 rounded-[2rem]" />
             </motion.div>
 
-            {/* Text */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -176,24 +169,17 @@ export default function AboutUs() {
               transition={{ duration: 0.8 }}
               className="order-1 lg:order-2"
             >
-              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Who We Are</p>
+              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">{t("about.whoWeAreBadge")}</p>
               <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
-                We make the food we grew up loving.
+                {t("about.whoWeAreTitle")}
               </h2>
               <div className="w-20 h-1 bg-primary mb-8 rounded-full" />
               <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
-                <p>
-                  We grew up eating real kolo, peanut, genuine shiro, spices that smelled like someone's grandmother was in the kitchen. When we started this company, we asked one question: how do we make food this good available to everyone, every day, at a fair price?
-                </p>
-                <p>
-                  That question led us everywhere — to highland farms, to trusted suppliers, to our own facility where we could control every step. We invested in facilities that could handle traditional foods with modern hygiene. We hired people who care about quality because they care about the food.
-                </p>
-                <p>
-                  Today, we supply homes and businesses across Ethiopia and beyond. But the mission has not changed: to make authentic, nourishing food accessible to everyone who wants it.
-                </p>
+                <p>{t("about.whoWeAreP1")}</p>
+                <p>{t("about.whoWeAreP2")}</p>
+                <p>{t("about.whoWeAreP3")}</p>
               </div>
 
-              {/* Simple rules */}
               <div className="mt-8 space-y-2">
                 {rules.map((rule, i) => (
                   <motion.div
@@ -212,7 +198,7 @@ export default function AboutUs() {
 
               <Link href="/products">
                 <Button size="lg" className="mt-8 rounded-full px-8 hover:-translate-y-1 transition-all group">
-                  See Our Products
+                  {t("about.seeProducts")}
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -237,14 +223,13 @@ export default function AboutUs() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">What We Stand For</p>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">Our Vision</h2>
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">{t("about.visionBadge")}</p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">{t("about.visionTitle")}</h2>
             <p className="text-muted-foreground text-xl leading-relaxed max-w-3xl mx-auto">
-              To bring the true taste of Ethiopia to every table — authentically, and without compromise.
+              {t("about.visionDesc")}
             </p>
           </motion.div>
 
-          {/* Vision elaboration */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -253,20 +238,19 @@ export default function AboutUs() {
             className="bg-card border border-border/40 rounded-3xl p-10 mb-14 max-w-4xl mx-auto shadow-md"
           >
             <div className="space-y-4 text-muted-foreground leading-relaxed text-lg text-center">
-              <p>We want the grandmother in Addis to find our kolo and recognize her own.</p>
-              <p>We want the student abroad to open our shiro and smell their mother's kitchen.</p>
-              <p>We want the family on any budget to afford food that is good for them.</p>
+              <p>{t("about.visionP1")}</p>
+              <p>{t("about.visionP2")}</p>
+              <p>{t("about.visionP3")}</p>
             </div>
           </motion.div>
 
-          {/* Focus pills */}
-          <p className="text-center text-primary font-medium tracking-widest uppercase text-sm mb-8">Our Focus</p>
+          <p className="text-center text-primary font-medium tracking-widest uppercase text-sm mb-8">{t("about.focusBadge")}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {focuses.map((f, idx) => {
-              const Icon = f.icon;
+            {focuses.map((label, idx) => {
+              const Icon = FOCUS_ICONS[idx];
               return (
                 <motion.div
-                  key={f.label}
+                  key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
@@ -278,7 +262,7 @@ export default function AboutUs() {
                         <Icon strokeWidth={1.5} className="w-8 h-8" />
                       </div>
                       <h3 className="text-lg font-display font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {f.label}
+                        {label}
                       </h3>
                     </CardContent>
                   </Card>
@@ -303,14 +287,13 @@ export default function AboutUs() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Our Impact</p>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-5">Impact on Quality</h2>
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">{t("about.qualityBadge")}</p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-5">{t("about.qualityTitle")}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              A real manufacturing facility designed for one purpose: making safe, consistent, delicious food.
+              {t("about.qualityDesc")}
             </p>
           </motion.div>
 
-          {/* Two images: production floor + machinery */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -327,8 +310,8 @@ export default function AboutUs() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-6">
-                <p className="text-white font-display font-bold text-lg">Production Floor</p>
-                <p className="text-white/75 text-sm">Controlled, sanitized daily, organized by workflow.</p>
+                <p className="text-white font-display font-bold text-lg">{t("about.prodFloorLabel")}</p>
+                <p className="text-white/75 text-sm">{t("about.prodFloorCaption")}</p>
               </div>
             </motion.div>
 
@@ -347,23 +330,18 @@ export default function AboutUs() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-6">
-                <p className="text-white font-display font-bold text-lg">Machinery</p>
-                <p className="text-white/75 text-sm">Modern roasters, grinders, and packaging equipment.</p>
+                <p className="text-white font-display font-bold text-lg">{t("about.machineryImgLabel")}</p>
+                <p className="text-white/75 text-sm">{t("about.machineryImgCaption")}</p>
               </div>
             </motion.div>
           </div>
 
-          {/* 3 quality pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { icon: Wheat, title: "Production Area", desc: "Controlled, sanitized daily, organized by workflow. Every batch moves from raw ingredient to finished product without cross-contamination." },
-              { icon: ShieldCheck, title: "Machinery", desc: "Modern roasters, grinders, and packaging equipment. Maintained daily. Calibrated for precision." },
-              { icon: Users, title: "People", desc: "Trained staff who know their machines and know their food. Many of us grew up eating what we now make." },
-            ].map((item, idx) => {
-              const Icon = item.icon;
+            {qualityPillarTitles.map((title, idx) => {
+              const Icon = QUALITY_ICONS[idx];
               return (
                 <motion.div
-                  key={item.title}
+                  key={idx}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
@@ -375,8 +353,8 @@ export default function AboutUs() {
                         <Icon strokeWidth={1.5} className="w-7 h-7" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-display font-bold text-foreground mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                        <h3 className="text-xl font-display font-bold text-foreground mb-2">{title}</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">{qualityPillarDescs[idx]}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -403,28 +381,22 @@ export default function AboutUs() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Our Impact</p>
+              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">{t("about.safetyBadge")}</p>
               <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
-                Impact on Safety
+                {t("about.safetyTitle")}
               </h2>
               <div className="w-20 h-1 bg-primary mb-8 rounded-full" />
               <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
-                <p>
-                  Every peanut tested for aflatoxin. Every spice checked for purity. Every product formulated with one rule: nothing artificial, ever.
-                </p>
-                <p>
-                  We maintain an on-site lab where we test for moisture, purity, consistency, and contaminants. If a batch does not meet our standards, it does not leave this building.
-                </p>
-                <p className="text-foreground font-semibold text-xl">
-                  We do not outsource our quality. We own it.
-                </p>
+                <p>{t("about.safetyP1")}</p>
+                <p>{t("about.safetyP2")}</p>
+                <p className="text-foreground font-semibold text-xl">{t("about.safetyP3")}</p>
               </div>
 
               <div className="mt-8 flex items-center gap-4 p-5 bg-primary/10 rounded-2xl border border-primary/20">
                 <FlaskConical className="w-10 h-10 text-primary shrink-0" strokeWidth={1.5} />
                 <div>
-                  <p className="font-bold text-foreground">On-site Laboratory</p>
-                  <p className="text-muted-foreground text-sm">Clean surfaces, professional equipment, technician at work — every batch verified.</p>
+                  <p className="font-bold text-foreground">{t("about.labBadgeTitle")}</p>
+                  <p className="text-muted-foreground text-sm">{t("about.labBadgeDesc")}</p>
                 </div>
               </div>
             </motion.div>
@@ -444,8 +416,8 @@ export default function AboutUs() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-display font-bold text-lg">Quality Control Lab</p>
-                <p className="text-white/75 text-sm">Every batch tested before it leaves this building.</p>
+                <p className="text-white font-display font-bold text-lg">{t("about.labImageLabel")}</p>
+                <p className="text-white/75 text-sm">{t("about.labImageCaption")}</p>
               </div>
             </motion.div>
           </div>
@@ -466,18 +438,14 @@ export default function AboutUs() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Science & Safety</p>
+              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">{t("about.scienceBadge")}</p>
               <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
-                Our Quality Control Laboratory
+                {t("about.scienceTitle")}
               </h2>
               <div className="w-20 h-1 bg-primary mb-8 rounded-full" />
               <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
-                <p>
-                  Every product leaving our facility passes through a fully equipped in-house laboratory. Our team of food scientists and quality control specialists test for moisture content, microbial safety, and nutritional consistency.
-                </p>
-                <p>
-                  We use internationally certified instruments — from binocular microscopes for microbiological inspection to precision autoclaves for sterilization — ensuring that every batch meets Ethiopian and international food safety standards.
-                </p>
+                <p>{t("about.scienceP1")}</p>
+                <p>{t("about.scienceP2")}</p>
               </div>
             </motion.div>
 
@@ -496,44 +464,18 @@ export default function AboutUs() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-display font-bold text-lg">Quality Control Management</p>
-                <p className="text-white/75 text-sm">Ensuring every product meets our exacting standards before it leaves the facility.</p>
+                <p className="text-white font-display font-bold text-lg">{t("about.labTeamLabel")}</p>
+                <p className="text-white/75 text-sm">{t("about.labTeamCaption")}</p>
               </div>
             </motion.div>
           </div>
 
-          {/* Lab equipment cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                image: "/factory/lab-microscope.webp",
-                icon: Microscope,
-                title: "Magnus Theia Microscope",
-                desc: "High-resolution binocular microscope used for microbiological inspection of raw materials and finished products.",
-              },
-              {
-                image: "/factory/lab-magnetic-stirrer.webp",
-                icon: FlaskConical,
-                title: "Temperature Magnetic Stirrer",
-                desc: "85-2A precision temperature-controlled magnetic stirrer used for chemical analysis and moisture determination testing.",
-              },
-              {
-                image: "/factory/lab-autoclave.webp",
-                icon: Wind,
-                title: "Pressure Autoclave Sterilizer",
-                desc: "Stainless steel autoclave sterilizes lab instruments and culture media, ensuring a contamination-free testing environment.",
-              },
-              {
-                image: "/factory/lab-oven.webp",
-                icon: Thermometer,
-                title: "Cologne-Lab Drying Oven",
-                desc: "Programmable laboratory oven used for moisture content analysis and drying tests on food samples.",
-              },
-            ].map((item, idx) => {
-              const Icon = item.icon;
+            {labEquipmentTitles.map((title, idx) => {
+              const Icon = LAB_ICONS[idx];
               return (
                 <motion.div
-                  key={item.title}
+                  key={idx}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
@@ -544,8 +486,8 @@ export default function AboutUs() {
                   <Card className="h-full border-border/40 bg-card overflow-hidden hover:shadow-[0_15px_30px_-10px_rgba(194,99,33,0.2)] hover:border-primary/40 transition-all duration-300">
                     <div className="relative h-44 overflow-hidden bg-muted">
                       <img
-                        src={item.image}
-                        alt={item.title}
+                        src={labEquipmentImages[idx]}
+                        alt={title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         loading="lazy"
                       />
@@ -556,9 +498,9 @@ export default function AboutUs() {
                     </div>
                     <CardContent className="p-5">
                       <h3 className="font-display text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors leading-snug">
-                        {item.title}
+                        {title}
                       </h3>
-                      <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
+                      <p className="text-muted-foreground text-xs leading-relaxed">{labEquipmentDescs[idx]}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -584,18 +526,14 @@ export default function AboutUs() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Inside Our Facility</p>
+              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">{t("about.machineryBadge")}</p>
               <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
-                Our Production Machinery
+                {t("about.machineryTitle")}
               </h2>
               <div className="w-20 h-1 bg-primary mb-8 rounded-full" />
               <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
-                <p>
-                  Our production line is purpose-built for Ethiopian traditional foods — combining modern industrial equipment with the precision that handcrafted food demands. Every machine is maintained daily and calibrated to exacting standards.
-                </p>
-                <p>
-                  From heavy-duty mixing tanks to high-speed vertical form-fill-seal packaging lines, our machinery lets us scale without ever compromising consistency or hygiene.
-                </p>
+                <p>{t("about.machineryP1")}</p>
+                <p>{t("about.machineryP2")}</p>
               </div>
             </motion.div>
 
@@ -614,44 +552,18 @@ export default function AboutUs() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-display font-bold text-lg">Full Production Floor</p>
-                <p className="text-white/75 text-sm">Overhead view of our integrated manufacturing line.</p>
+                <p className="text-white font-display font-bold text-lg">{t("about.machineryOverviewLabel")}</p>
+                <p className="text-white/75 text-sm">{t("about.machineryOverviewCaption")}</p>
               </div>
             </motion.div>
           </div>
 
-          {/* Machinery cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                image: "/factory/factory-cepi-tank.webp",
-                icon: Layers,
-                title: "CEPi Mixing Tank",
-                desc: "Industrial-grade CEPi stainless steel mixing tanks process raw ingredients at high volume with precise temperature control.",
-              },
-              {
-                image: "/factory/factory-abb-mixer.webp",
-                icon: Settings,
-                title: "ABB High-Speed Mixer",
-                desc: "ABB-powered mixer delivers consistent blending of spices, grains, and legumes — maintaining uniform texture batch after batch.",
-              },
-              {
-                image: "/factory/factory-flowwrap-wide.webp",
-                icon: Package,
-                title: "MARKMAK Flowwrap Machine",
-                desc: "Vertical form-fill-seal packaging machine wraps and seals products hygienically at scale, preserving freshness without preservatives.",
-              },
-              {
-                image: "/factory/factory-control-panel.webp",
-                icon: Gauge,
-                title: "Control & Monitoring Panel",
-                desc: "Centralised control panels allow our technicians to monitor roasting temperature, conveyor speed, and packaging output in real time.",
-              },
-            ].map((item, idx) => {
-              const Icon = item.icon;
+            {machineryCardTitles.map((title, idx) => {
+              const Icon = MACHINERY_ICONS[idx];
               return (
                 <motion.div
-                  key={item.title}
+                  key={idx}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
@@ -662,8 +574,8 @@ export default function AboutUs() {
                   <Card className="h-full border-border/40 bg-card overflow-hidden hover:shadow-[0_15px_30px_-10px_rgba(194,99,33,0.2)] hover:border-primary/40 transition-all duration-300">
                     <div className="relative h-44 overflow-hidden bg-muted">
                       <img
-                        src={item.image}
-                        alt={item.title}
+                        src={machineryCardImages[idx]}
+                        alt={title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         loading="lazy"
                       />
@@ -674,9 +586,9 @@ export default function AboutUs() {
                     </div>
                     <CardContent className="p-5">
                       <h3 className="font-display text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors leading-snug">
-                        {item.title}
+                        {title}
                       </h3>
-                      <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
+                      <p className="text-muted-foreground text-xs leading-relaxed">{machineryCardDescs[idx]}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -699,22 +611,18 @@ export default function AboutUs() {
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Our Impact</p>
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">{t("about.teamBadge")}</p>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
-              Our Team
+              {t("about.teamTitle")}
             </h2>
             <div className="w-20 h-1 bg-primary mb-8 rounded-full" />
             <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
-              <p>
-                Farmers, sorters, roasters, packers, testers, drivers. Many of us grew up eating the foods we now make. We know what kolo should taste like. We know how berbere should smell. That knowledge cannot be programmed into a machine.
-              </p>
-              <p>
-                Every hand-sorted peanut, every checked roast, every signed-off batch carries our attention.
-              </p>
+              <p>{t("about.teamP1")}</p>
+              <p>{t("about.teamP2")}</p>
             </div>
             <div className="mt-8 p-6 bg-primary rounded-2xl text-white shadow-lg">
-              <p className="text-2xl font-display font-bold mb-1">We eat what we make.</p>
-              <p className="text-white/85">So should you.</p>
+              <p className="text-2xl font-display font-bold mb-1">{t("about.teamQuote")}</p>
+              <p className="text-white/85">{t("about.teamQuoteSub")}</p>
             </div>
           </motion.div>
         </div>
@@ -735,16 +643,16 @@ export default function AboutUs() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">Our Commitment</p>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">Our Promise</h2>
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">{t("about.promiseBadge")}</p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">{t("about.promiseTitle")}</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {promises.map((p, idx) => {
-              const Icon = p.icon;
+            {promiseTitles.map((title, idx) => {
+              const Icon = PROMISE_ICONS[idx];
               return (
                 <motion.div
-                  key={p.title}
+                  key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
@@ -756,9 +664,9 @@ export default function AboutUs() {
                         <Icon strokeWidth={1.5} className="w-7 h-7" />
                       </div>
                       <h3 className="text-xl font-display font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-                        {p.title}
+                        {title}
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed text-sm">{p.desc}</p>
+                      <p className="text-muted-foreground leading-relaxed text-sm">{promiseDescs[idx]}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -793,9 +701,9 @@ export default function AboutUs() {
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-primary font-bold tracking-widest uppercase text-sm mb-4">Get in Touch</p>
+            <p className="text-primary font-bold tracking-widest uppercase text-sm mb-4">{t("about.ctaBadge")}</p>
             <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 drop-shadow-md">
-              Any questions? Ask us.
+              {t("about.ctaTitle")}
             </h2>
             <motion.div
               initial={{ width: 0 }}
@@ -804,14 +712,14 @@ export default function AboutUs() {
               className="h-1.5 bg-primary mx-auto mb-8 rounded-full shadow-[0_0_15px_rgba(194,99,33,0.5)]"
             />
             <p className="text-xl text-white/90 leading-relaxed mb-12 font-medium">
-              We will tell you the truth. About our ingredients, our process, our prices — everything.
+              {t("about.ctaDesc")}
             </p>
             <Link href="/contact">
               <Button
                 size="lg"
                 className="text-lg px-10 py-7 rounded-full bg-white text-secondary font-bold hover:bg-primary hover:text-white transition-all hover:scale-105"
               >
-                Contact Us
+                {t("about.ctaButton")}
                 <ArrowRight className="ml-2 w-6 h-6" />
               </Button>
             </Link>

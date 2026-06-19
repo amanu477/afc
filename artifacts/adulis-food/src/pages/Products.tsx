@@ -10,9 +10,19 @@ import { STATIC_PRODUCTS } from "@/data/products";
 import { ProductImage } from "@/components/ProductImage";
 
 const CATEGORY_KEYS = ["All", "Snacks", "Spreads", "Nuts", "Spices", "Grains", "Flours", "Spice Blends", "Condiments"];
+const CATEGORY_AM: Record<string, string> = {
+  Snacks: "መክሰሶች",
+  Spreads: "ቅቤዎች",
+  Nuts: "ለውዝ",
+  Spices: "ቅመሞች",
+  Grains: "ጥራጥሬ",
+  Flours: "ዱቄቶች",
+  "Spice Blends": "የቅመም ቅልቅሎች",
+  Condiments: "ቅምሻዎች",
+};
 
 export default function Products() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filtered =
@@ -23,6 +33,12 @@ export default function Products() {
   const activeCategories = CATEGORY_KEYS.filter(
     (c) => c === "All" || STATIC_PRODUCTS.some((p) => p.category === c)
   );
+
+  const getCategoryLabel = (cat: string) => {
+    if (cat === "All") return t("products.all");
+    if (i18n.language === "am" && CATEGORY_AM[cat]) return CATEGORY_AM[cat];
+    return cat;
+  };
 
   const trustBadges = [
     { icon: ShieldCheck, text: t("products.qualityCertified"), color: "text-blue-500" },
@@ -136,7 +152,7 @@ export default function Products() {
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
                   />
                 )}
-                <span className="relative z-10">{cat}</span>
+                <span className="relative z-10">{getCategoryLabel(cat)}</span>
               </button>
             ))}
           </div>
@@ -223,12 +239,12 @@ export default function Products() {
                             <Link href={`/products/${product.id}`}>
                               <button className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition shadow-lg shadow-primary/25 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30 duration-200">
                                 <ArrowRight className="h-4 w-4" />
-                                Learn More
+                                {t("products.learnMore")}
                               </button>
                             </Link>
                             <Link href="/contact">
                               <button className="flex items-center gap-2 border border-border text-foreground px-6 py-3 rounded-full font-semibold hover:border-primary hover:text-primary transition duration-200">
-                                Order Now
+                                {t("products.orderNow")}
                               </button>
                             </Link>
                           </div>
