@@ -16,7 +16,7 @@ const en = {
       "We are dedicated to bringing the heart of Ethiopian tradition to your table. Authentic, hygienic, and delicious products that honor our culinary heritage.",
     quickLinks: "Quick Links",
     contact: "Contact",
-    location: "East Africa Operations Hub\nServing families globally",
+    location: "Kembre, Sululta\nOromia, Ethiopia",
     copyright: "© 2026 Adulis Food Complex. All rights reserved.",
     terms: "Terms of Service",
     privacy: "Privacy Policy",
@@ -270,7 +270,7 @@ const en = {
     heroDesc:
       "We'd love to hear from you. Whether you're a customer, a business partner, an NGO, or a future team member — reach out to us.",
     ourLocation: "Our Location",
-    locationLines: ["East Africa Operations Hub", "Serving families & organizations globally"],
+    locationLines: ["Kembre, Sululta", "Oromia, Ethiopia"],
     emailUs: "Email Us",
     callUs: "Call Us",
     callHours: "Mon – Fri, 8am – 6pm EAT",

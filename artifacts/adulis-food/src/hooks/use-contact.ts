@@ -12,9 +12,16 @@ export type ContactInput = z.infer<typeof contactSchema>;
 export function useContact() {
   return useMutation({
     mutationFn: async (data: ContactInput) => {
-      // Simulate API call for the frontend-only app
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      return { success: true, data };
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error((err as { error?: string }).error ?? "Failed to send message");
+      }
+      return res.json();
     },
   });
 }

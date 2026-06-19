@@ -44,14 +44,14 @@ export default function ContactUs() {
     {
       icon: Mail,
       title: t("contact.emailUs"),
-      lines: ["hello@adulisfood.com", "sales@adulisfood.com"],
+      lines: ["adulis@adulisfoodcomplex.com"],
       color: "text-primary",
       bg: "bg-primary/10",
     },
     {
       icon: Phone,
       title: t("contact.callUs"),
-      lines: ["+251 (0) 911 000 000", t("contact.callHours")],
+      lines: ["+251911401168", "+251911373333", t("contact.callHours")],
       color: "text-primary",
       bg: "bg-primary/10",
     },
