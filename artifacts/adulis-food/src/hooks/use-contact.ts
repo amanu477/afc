@@ -12,16 +12,24 @@ export type ContactInput = z.infer<typeof contactSchema>;
 export function useContact() {
   return useMutation({
     mutationFn: async (data: ContactInput) => {
-      const res = await fetch("/api/contact", {
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string;
+      if (!accessKey) throw new Error("Contact form is not configured");
+
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          subject: `New Contact Form Message from ${data.name}`,
+          from_name: "Adulis Food Complex Website",
+        }),
       });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error((err as { error?: string }).error ?? "Failed to send message");
-      }
-      return res.json();
+      const json = await res.json() as { success: boolean; message?: string };
+      if (!json.success) throw new Error(json.message ?? "Failed to send message");
+      return json;
     },
   });
 }

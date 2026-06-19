@@ -39,7 +39,15 @@ router.post("/contact", async (req, res): Promise<void> => {
       }),
     });
 
-    const data = await response.json() as { success: boolean; message?: string };
+    const text = await response.text();
+    let data: { success: boolean; message?: string };
+    try {
+      data = JSON.parse(text);
+    } catch {
+      console.error("Web3Forms non-JSON response:", text.slice(0, 200));
+      res.status(500).json({ error: "Failed to send email. Please try again." });
+      return;
+    }
 
     if (!data.success) {
       console.error("Web3Forms error:", data.message);
