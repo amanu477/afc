@@ -64,3 +64,10 @@ timeoutMs = 20000
 
 [nix]
 channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+SMTP_HOST = "smtp.hostinger.com"
+SMTP_PORT = "587"
+SMTP_USER = "adulis@adulisfoodcomplex.com"
